@@ -1,0 +1,14 @@
+{
+  "name": "jsenigma",
+  "version": "1.0.0",
+  "description": "An Enigma simulator in Javascript",
+  "main": "index.js",
+  "author": "Albin Theander (Albin.Theander@jayway.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest-cli": "^23.6.0"
+  }
+}
