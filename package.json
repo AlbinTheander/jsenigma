@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Albin Theander (Albin.Theander@jayway.com)",
   "license": "MIT",
+  "scripts": {
+    "test": "jest --verbose"
+  },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.1.0",
