@@ -84,4 +84,31 @@ describe("Rotor", () => {
       });
     });
   });
+  describe('#tick', () => {
+    describe('when rotor is initiated with ticker and the next part can tick', () => {
+      let rotor;
+      let next;
+      beforeEach(() => {
+        rotor = new Rotor(REVERSED_ALPHABET, 'C', 'E');
+        next = { tick: jest.fn() };
+        rotor.setNext(next);
+      });
+      afterEach(() => jest.resetAllMocks());
+      describe('and the rotor is ticked to a character that not is a ticker', () => {
+        beforeEach(() => rotor.tick());
+        it('should not try to tick the next part', () => {
+          expect(next.tick).not.toHaveBeenCalled();
+        });
+      });
+      describe('and the rotor is ticked to a character that is a ticker', () => {
+        beforeEach(() => {
+          rotor.tick();
+          rotor.tick();
+        });
+        it('should tick the next part', () => {
+          expect(next.tick).toHaveBeenCalled();
+        });
+      });
+    });
+  })
 });
