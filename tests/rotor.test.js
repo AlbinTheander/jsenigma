@@ -5,13 +5,13 @@ const REVERSED_ALPHABET = [...ALPHABET].reverse().join("");
 
 describe("Rotor", () => {
   it("can be instantiated with a mapping and a start character", () => {
-    expect(new Rotor(ALPHABET, "C")).toBeTruthy();
+    expect(new Rotor('custom', ALPHABET, "C")).toBeTruthy();
   });
   describe("#scramble", () => {
     describe("when mapping to a reversed alphabet and starting at A", () => {
       let rotor;
       beforeEach(() => {
-        rotor = new Rotor(REVERSED_ALPHABET, "A");
+        rotor = new Rotor('custom', REVERSED_ALPHABET, "A");
       });
       it("scrambles A to Z", () => {
         expect(rotor.scramble("A")).toBe("Z");
@@ -23,30 +23,30 @@ describe("Rotor", () => {
         beforeEach(() => {
           rotor.tick();
         });
-        it("scrambles A to Y", () => {
-          expect(rotor.scramble("A")).toBe("Y");
+        it("scrambles A to X", () => {
+          expect(rotor.scramble("A")).toBe("X");
         });
-        it("scrambles Z to Z", () => {
-          expect(rotor.scramble("Z")).toBe("Z");
+        it("scrambles Z to Y", () => {
+          expect(rotor.scramble("Z")).toBe("Y");
         });
       });
     });
     describe("when mapping to DCBAEFGHIJKLMNOPQRSTUVWXYZ starting at E", () => {
       let rotor;
       beforeEach(() => {
-        rotor = new Rotor("DCBAEFGHIJKLMNOPQRSTUVWXYZ", "E");
+        rotor = new Rotor('custom', "DCBAEFGHIJKLMNOPQRSTUVWXYZ", "E");
       });
-      it("scrambles A to E", () => {
-        expect(rotor.scramble("A")).toBe("E");
+      it("scrambles A to A", () => {
+        expect(rotor.scramble("A")).toBe("A");
       });
-      it("scrambles Z to A", () => {
-        expect(rotor.scramble("Z")).toBe("A");
+      it("scrambles Z to W", () => {
+        expect(rotor.scramble("Z")).toBe("W");
       });
-      it("scrambles W to D", () => {
-        expect(rotor.scramble("W")).toBe("D");
+      it("scrambles W to Z", () => {
+        expect(rotor.scramble("W")).toBe("Z");
       });
-      it("scrambles E to A when reversed", () => {
-        expect(rotor.scramble("E", true)).toBe("A");
+      it("scrambles E to E when reversed", () => {
+        expect(rotor.scramble("E", true)).toBe("E");
       });
 
       describe("after two ticks", () => {
@@ -54,21 +54,21 @@ describe("Rotor", () => {
           rotor.tick();
           rotor.tick();
         });
-        it("scrambles A to E", () => {
-          expect(rotor.scramble("A")).toBe("G");
+        it("scrambles A to A", () => {
+          expect(rotor.scramble("A")).toBe("A");
         });
-        it("scrambles Z to A", () => {
-          expect(rotor.scramble("Z")).toBe("F");
+        it("scrambles Z to Z", () => {
+          expect(rotor.scramble("Z")).toBe("Z");
         });
-        it("scrambles W to D", () => {
-          expect(rotor.scramble("W")).toBe("B");
+        it("scrambles W to V", () => {
+          expect(rotor.scramble("W")).toBe("V");
         });
       });
     });
   });
   describe('#receive', () => {
     describe("when mapping to a reversed alphabet and starting at A", () => {
-      const rotor = new Rotor(REVERSED_ALPHABET, "A");
+      const rotor = new Rotor('custom', REVERSED_ALPHABET, "A");
       const next = { receive: jest.fn() };
       const prev = { receive: jest.fn() };
       rotor.setNext(next);
@@ -89,7 +89,7 @@ describe("Rotor", () => {
       let rotor;
       let next;
       beforeEach(() => {
-        rotor = new Rotor(REVERSED_ALPHABET, 'C', 'E');
+        rotor = new Rotor('custom', REVERSED_ALPHABET, 'C', 'E');
         next = { tick: jest.fn() };
         rotor.setNext(next);
       });

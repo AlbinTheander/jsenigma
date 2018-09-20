@@ -1,26 +1,29 @@
+const { ALPHABET } = require('../lib/alphabet');
 const { encode } = require('../lib/encode');
 
 describe('encode', () => {
-  describe('when mapping ABCD to EFGH with offset 0', () => {
+  const from = ALPHABET;
+  const to = 'EKMFLGDQVZNTOWYHXUSPAIBRCJ';
+  describe('when mapping alphabet to EKMFLGDQVZNTOWYHXUSPAIBRCJ with offset 0', () => {
     it('encodes A as E', () => {
-      expect(encode('ABCD', 'EFGH', 0, 'A')).toBe('E');
+      expect(encode(from, to, 0, 'A')).toBe('E');
     });
-    it('encodes D as H', () => {
-      expect(encode('ABCD', 'EFGH', 0, 'D')).toBe('H');
+    it('encodes D as F', () => {
+      expect(encode(from, to, 0, 'D')).toBe('F');
     });
-    it('encodes X as X', () => {
-      expect(encode('ABCD', 'EFGH', 0, 'X')).toBe('X');
+    it('encodes X as R', () => {
+      expect(encode(from, to, 0, 'X')).toBe('R');
     });
   })
-  describe('when mapping ABC to EFG with offset 2', () => {
-    it('encodes A as G', () => {
-      expect(encode('ABC', 'EFG', 2, 'A')).toBe('G');
+  describe('when mapping alphabet to EKMFLGDQVZNTOWYHXUSPAIBRCJ with offset 2', () => {
+    it('encodes A as K', () => {
+      expect(encode(from, to, 2, 'A')).toBe('K');
     });
-    it('encodes C as F', () => {
-      expect(encode('ABC', 'EFG', 2, 'C')).toBe('F');
+    it('encodes C as J', () => {
+      expect(encode(from, to, 2, 'C')).toBe('J');
     });
-    it('encodes X as X', () => {
-      expect(encode('ABC', 'EFG', 2, 'X')).toBe('X');
+    it('encodes X as H', () => {
+      expect(encode(from, to, 2, 'X')).toBe('H');
     });
   })
 });
