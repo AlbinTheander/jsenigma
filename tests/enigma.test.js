@@ -1,8 +1,8 @@
-const Enigma = require('../lib/enigmaEngine');
+const Enigma = require('../lib/enigma');
 
 describe('Enigma Engine', () => {
   it.skip('can decode an Y to Z', () => {
-    const engine = new Enigma();
+    const engine = new Enigma('B BETA III IV I AXLE (HQ) (EX) (IP) (TR) (BY)');
     expect(engine.encode('Y')).toBe('Z');
   });
   it('can decode some text', () => {
@@ -32,7 +32,8 @@ IBXRE WXUEB ZQJOY MHIPG RREGO
 HETUX DTWLC MMWAV NVJVH OUFAN
 TQACK KTOZZ RDABQ NNVPO IEFQA
 FSVVI CVUDU EREYN PFFMN BJVGQ`;
-    const engine = new Enigma();
-    expect(engine.encode(text)).toBe(expected);
+
+  const engine = new Enigma('B BETA III IV I AXLE (HQ) (EX) (IP) (TR) (BY)');
+  expect(engine.encode(text)).toBe(expected);
   });
 });
